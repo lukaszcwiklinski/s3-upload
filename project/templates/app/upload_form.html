@@ -1,0 +1,22 @@
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Uploaded at</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for upload in uploads %}
+        <tr>
+            <td><a href="{{ upload.upload.url }}" target="_blank">{{ upload.upload.name }}</a></td>
+            <td>{{ upload.uploaded_at }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
